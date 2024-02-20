@@ -24,7 +24,6 @@ def number_lines(file):
     file.close()
 
 
-# specify multiple files as arguments
 @main.command("tail")
 @click.argument("files", type=click.File(), nargs=-1)
 @click.option(
@@ -47,6 +46,34 @@ def tail(files, n):
         lines = stdin.readlines()
         for line in lines[-n:]:
             print(line, end="")
+
+
+@main.command("wc")
+@click.argument("files", type=click.File(), nargs=-1)
+def word_count(files):
+    total_lines = 0
+    total_words = 0
+    total_chars = 0
+    for file in files:
+        lines = file.readlines()
+        words = sum(len(line.split()) for line in lines)
+        chars = sum(len(line) for line in lines)
+        print(f"{len(lines)} {words} {chars} {file.name}")
+        total_lines += len(lines)
+        total_words += words
+        total_chars += chars
+        file.close()
+    if len(files) > 1:
+        print(f"{total_lines} {total_words} {total_chars} total")
+    if len(files) == 0:
+        lines = stdin.readlines()
+        words = sum(len(line.split()) for line in lines)
+        chars = sum(len(line) for line in lines)
+        print(f"{len(lines)} {words} {chars}")
+        total_lines += len(lines)
+        total_words += words
+        total_chars += chars
+        print(f"{total_lines} {total_words} {total_chars} total")
 
 
 if __name__ == "__main__":
