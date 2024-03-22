@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "pdflatexsotnikovarkadiy"
+version = "0.1.2"
+description = ""
+authors = ["Sotnikov Arkadiy <cotnikoarkady@gmail.com>"]
+readme = "README.md"
+packages = [
+    { include = "latexgen", from = "." },
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.1.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
