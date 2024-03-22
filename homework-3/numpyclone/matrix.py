@@ -4,6 +4,11 @@ T = TypeVar('T')
 
 
 class Matrix(Generic[T]):
+    """
+    A class to represent a matrix.
+    Does not support broadcasting.
+    And don't use numpy at all.
+    """
     def __init__(self, data: list[list[T]]):
         self.data = data
 
