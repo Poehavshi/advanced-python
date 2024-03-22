@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "numpyclone"
+version = "0.1.0"
+description = "Little clone of numpy to get basic knowledge about OOP"
+authors = ["Sotnikov Arkadiy <cotnikoarkady@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.1.1"
+numpy = "^1.26.4"
+coverage = "^7.4.4"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
