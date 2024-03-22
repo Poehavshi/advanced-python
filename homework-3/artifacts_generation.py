@@ -46,6 +46,36 @@ def task3_2():
     mat1.value = a
 
 
+def task3_3():
+    # test cache
+    np.random.seed(0)
+    A = npclone.Matrix(((1, 2, 3), (4, 5, 6)))
+    B = npclone.Matrix(((4, 5, 6), (1, 2, 3)))
+    C = npclone.Matrix(((4, 6, 5), (1, 2, 3)))
+    D = npclone.Matrix(((4, 5, 6), (1, 2, 3)))
+
+    artifacts_path = Path("artifacts") / "3.3"
+    with open(artifacts_path / "A.txt", "w") as f:
+        f.write(str(A))
+    with open(artifacts_path / "B.txt", "w") as f:
+        f.write(str(B))
+    with open(artifacts_path / "C.txt", "w") as f:
+        f.write(str(C))
+    with open(artifacts_path / "D.txt", "w") as f:
+        f.write(str(D))
+
+    ab = A @ B
+    cd = C @ D
+    with open(artifacts_path / "ab.txt", "w") as f:
+        f.write(str(ab))
+    with open(artifacts_path / "cd.txt", "w") as f:
+        f.write(str(cd))
+    with open(artifacts_path / "hash.txt", "w") as f:
+        f.write(f"ab: {hash(ab)}\n")
+        f.write(f"cd: {hash(cd)}\n")
+
+
 if __name__ == '__main__':
     task3_1()
     task3_2()
+    task3_3()
